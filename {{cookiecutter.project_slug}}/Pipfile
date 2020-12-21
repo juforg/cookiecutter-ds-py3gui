@@ -1,0 +1,35 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+ipython = "*"
+pytest = "*"
+black = "==19.10b0"
+isort = "*"
+autoflake = "*"
+pylint = "*"
+pre-commit = "*"
+pycodestyle = "*"
+pydocstyle = "*"
+coverage = "*"
+pytest-cov = "*"
+
+[packages]
+wandb = "*"
+attrs = "*"
+pandas = "*"
+numpy = "*"
+scipy = "*"
+seaborn = "*"
+jupyterlab = "*"
+{% if cookiecutter.cli_tool == "docopt" %}docopt = "*"{% elif cookiecutter.cli_tool == "click" %}click="*"{% endif %}
+versioneer = "*"
+
+[requires]
+python_version = "3.6"
+
+[scripts]
+beautify = "bash -c \"autoflake -i -r --expand-star-imports --remove-all-unused-imports --remove-duplicate-keys --remove-unused-variables **/*.py; isort **/*.py; black **/*.py\""
+lint = "bash -c \"pylint **/*.py\""

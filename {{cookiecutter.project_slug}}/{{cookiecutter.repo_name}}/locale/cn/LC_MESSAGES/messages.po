@@ -1,0 +1,118 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: messages\n"
+"POT-Creation-Date: 2016-06-16 11:20+PDT\n"
+"PO-Revision-Date: 2016-06-16 12:42-0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 1.6.10\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es\n"
+
+#: payslip-sender.py:37
+msgid "OK"
+msgstr "De acuerdo"
+
+#: payslip-sender.py:61
+msgid "Navigation "
+msgstr "Navegación "
+
+#: payslip-sender.py:74
+msgid "List item"
+msgstr "Producto en la lista"
+
+#: payslip-sender.py:88
+msgid "Unset status "
+msgstr "estado desarmado "
+
+#: payslip-sender.py:108
+msgid "Tool "
+msgstr "Herramienta "
+
+#: payslip-sender.py:118
+msgid "Toolbar button"
+msgstr "botón de la barra"
+
+#: payslip-sender.py:118
+msgid "pressed"
+msgstr "presionado"
+
+#: payslip-sender.py:127
+msgid "Template"
+msgstr "Modelo"
+
+#: payslip-sender.py:155
+msgid "New"
+msgstr "Nuevo"
+
+#: payslip-sender.py:156
+msgid "Open"
+msgstr "Abierto"
+
+#: payslip-sender.py:159
+msgid "Exit"
+msgstr "Salida"
+
+#: payslip-sender.py:163 payslip-sender.py:170
+msgid "Help"
+msgstr "帮助"
+
+#: payslip-sender.py:165 payslip-sender.py:195
+msgid "About"
+msgstr "关于"
+
+#: payslip-sender.py:169
+msgid "File"
+msgstr "文件"
+
+#: payslip-sender.py:180
+msgid "Help not yet created."
+msgstr "Ayudará aún no creado."
+
+#: payslip-sender.py:188
+msgid "No description available"
+msgstr "No hay descripción disponible"
+
+#: payslip-sender.py:190
+msgid "Author"
+msgstr "作者"
+
+#: payslip-sender.py:191
+msgid "Email"
+msgstr "邮件"
+
+#: payslip-sender.py:192
+msgid "Version"
+msgstr "版本"
+
+#: payslip-sender.py:193
+msgid "GitHub Package"
+msgstr "GitHub paquete"
+
+#: payslip-sender.py:201
+msgid "New button pressed"
+msgstr "Nuevo botón presionado"
+
+#: payslip-sender.py:201
+msgid "Not yet implemented"
+msgstr "未实现"
+
+#: payslip-sender.py:208
+msgid "File selected for open: "
+msgstr "选择文件打开:"
+
+#: payslip-sender.py:210
+msgid "No file selected"
+msgstr "没有选择文件"
+
+#: payslip-sender.py:252
+msgid "Uptime"
+msgstr "Uptime"

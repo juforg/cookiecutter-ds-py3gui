@@ -1,0 +1,31 @@
+{
+    "project_name": "Project Name",
+    "display_name": "DS Py3 Tkinter",
+    "repo_name": "dspy3tinker",
+    "repo_name": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
+    "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+    "pkg_name": "{{ cookiecutter.project_slug|replace('-', '') }}",
+    "author_name": "Your name (or your organization/company/team)",
+    "full_name": "juforg",
+    "email": "juforg@gmail.com",
+    "version": "0.0.1",
+    "short_description": "Python 3 Tkinter GUI",
+    "insert_navigation": "y",
+    "insert_status": "y",
+    "insert_toolbar": "y",
+    "package_manager": ["conda", "pip"],
+    "workflow_automation": ["Python", "Make", "Snakemake"],
+    "notebooks": ["No", "Yes"],
+    "open_source_license": ["MIT", "BSD-3-Clause", "No license file"],
+    "license": ["MIT License", "BSD License", "GNU General Public License v3", "Apache Software License 2.0", "Not open source"],
+    "language": "english",
+    "setup_project": ["Yes - select this", "No - for testing purposes only"],
+    "project_report": ["No", "Yes"],
+    "formatter_type": ["black", "autopep8"],
+    "src_structure": ["Less", "More"],
+    "_copy_without_render": [
+        "*.j2",
+        "*not_rendered_dir",
+        "rendered_dir/not_rendered_file.ini"
+    ]
+}
