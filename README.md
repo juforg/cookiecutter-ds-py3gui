@@ -1,6 +1,12 @@
 # Cookiecutter Data Science Py3Tkinter Template
-![Python version](https://img.shields.io/badge/Python-3.x-informational)
-[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
+<p align="center">
+<a href="https://github.com/juforg/cookiecutter-ds-py3tkinter/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/juforg/cookiecutter-ds-py3tkinter?style=social"></a>
+    <a>
+        <img src="https://img.shields.io/badge/Python-3.x-informational" />
+    </a>
+    <a href="https://github.com/juforg/cookiecutter-ds-py3tkinter/blob/main/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/juforg/cookiecutter-ds-py3tkinter?color=blue"></a>
+</p>
+
 
 _A logical, reasonably standardized, but flexible project structure for doing and sharing data science work._
 A template for command-line utility **cookiecutters** to create a Python 3 package with a Tkinter UI.
@@ -150,6 +156,8 @@ structure and philosophy to slightly different needs.
 - https://github.com/gvoysey/cookiecutter-python-scientific
 - https://github.com/Jswig/cookiecutter-flexible-ml
 - https://github.com/docker-science/cookiecutter-docker-science
+- https://github.com/PySimpleGUI/PySimpleGUI
+- https://github.com/tirthajyoti/DS-with-PySimpleGUI
 - [cookiecutter](https://cookiecutter.readthedocs.io/en/1.7.0/min) >= 1.1
 
 
@@ -169,3 +177,4 @@ structure and philosophy to slightly different needs.
 [autoflake]: https://github.com/myint/autoflake
 [pylint]: https://www.pylint.org/
 [Pytest]: https://docs.pytest.org/en/latest/
+[PySimpleGUI]: https://github.com/PySimpleGUI/PySimpleGUI

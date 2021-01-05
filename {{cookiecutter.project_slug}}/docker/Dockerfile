@@ -1,8 +1,4 @@
-{%- if cookiecutter.use_nvidia_docker == 'yes' -%}
-FROM nvidia/cuda:10.1-cudnn7-devel-ubuntu18.04
-{%- else -%}
 FROM ubuntu:18.04
-{%- endif %}
 
 RUN apt-get update && apt-get install -y \
   git \

@@ -1,17 +1,31 @@
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+#      SJ编程规范
+# 命名：
+#    1. 见名思意，变量的名字必须准确反映它的含义和内容
+#    2. 遵循当前语言的变量命名规则
+#    3. 不要对不同使用目的的变量使用同一个变量名
+#    4. 同个项目不要使用不同名称表述同个东西
+#    5. 函数/方法 使用动词+名词组合，其它使用名词组合
+# 设计原则：
+#    1. KISS原则： Keep it simple and stupid !
+#    2. SOLID原则： S: 单一职责 O: 开闭原则 L: 迪米特法则 I: 接口隔离原则 D: 依赖倒置原则
+#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# !/usr/bin/env python
 """
 {{cookiecutter.repo_name}}
 -----------------
 
 {{cookiecutter.short_description}}
 """
+# This is the main application module ........................................
 
+# standard modules
+import os, sys
 import datetime
 import gettext
-import sys
+from threading import Thread
 import time
-import tkinter
-import tkinter.ttk as ttk
-from tkinter.filedialog import askopenfilename
 
 # All translations provided for illustrative purposes only.
 {% if cookiecutter.language == 'german' %}
@@ -24,24 +38,29 @@ es.install()
 _ = lambda s: s
 {% endif %}
 
+# install update if user downloaded an update batch "FROZEN application only"
+if hasattr(sys, 'frozen'):  # like if application frozen by cx_freeze
+    current_directory = os.path.dirname(sys.executable)
 
-class PopupDialog(ttk.Frame):
-    "Sample popup dialog implemented to provide feedback."
+    # Should copy contents of dstk_update_files folder and overwrite dstk original files
+    update_batch_path = os.path.join(current_directory, 'PyIDM_update_files')
+    if os.path.isdir(update_batch_path):
+        from distutils.dir_util import copy_tree, remove_tree
 
-    def __init__(self, parent, title, body):
-        ttk.Frame.__init__(self, parent)
-        self.top = tkinter.Toplevel(parent)
-        _label = ttk.Label(self.top, text=body, justify=tkinter.LEFT)
-        _label.pack(padx=10, pady=10)
-        _button = ttk.Button(self.top, text=_("OK"), command=self.ok_button)
-        _button.pack(pady=5)
-        self.top.title(title)
+        copy_tree(update_batch_path, current_directory)
+        print('done installing updates')
 
-    def ok_button(self):
-        "OK button feedback."
+        # delete folder
+        remove_tree(update_batch_path)
 
-        self.top.destroy()
+# This code should stay on top to handle relative imports in case of direct call of pyIDM.py
+if __package__ is None:
+    path = os.path.realpath(os.path.abspath(__file__))
+    sys.path.insert(0, os.path.dirname(path))
+    sys.path.insert(0, os.path.dirname(os.path.dirname(path)))
 
+    __package__ = '{{cookiecutter.repo_name}}'
+    import {{cookiecutter.repo_name}}
 
 {% if cookiecutter.insert_navigation == 'y' %}
 class NavigationBar(ttk.Frame):
@@ -123,7 +142,7 @@ class MainFrame(ttk.Frame):
 
     past_time = datetime.datetime.now()
     _advertisement = 'Cookiecutter: Open-Source Project Templates'
-    _product = _('Template') + ': {{cookiecutter.display_name}}'
+    _product = _('Template') + ': {{cookiecutter.project_name}}'
     _boilerplate = _advertisement + '\n\n' + _product + '\n\n'
 
     def __init__(self, parent):
@@ -175,7 +194,7 @@ class MenuBar(tkinter.Menu):
         "Dialog cataloging results achievable, and provided means available."
 
         _description = _('Help not yet created.')
-        PopupDialog(self, '{{cookiecutter.display_name}}', _description)
+        PopupDialog(self, '{{cookiecutter.project_name}}', _description)
 
     def about_dialog(self):
         "Dialog concerning information about entities responsible for program."
@@ -184,12 +203,12 @@ class MenuBar(tkinter.Menu):
         if _description == '':
             _description = _('No description available')
         _description += '\n'
-        _description += '\n' + _('Author') + ': {{cookiecutter.full_name}}'
+        _description += '\n' + _('Author') + ': {{cookiecutter.author_name}}'
         _description += '\n' + _('Email') + ': {{cookiecutter.email}}'
         _description += '\n' + _('Version') + ': {{cookiecutter.version}}'
         _description += '\n' + _('GitHub Package') + \
                         ': {{cookiecutter.repo_name}}'
-        PopupDialog(self, _('About') + ' {{cookiecutter.display_name}}',
+        PopupDialog(self, _('About') + ' {{cookiecutter.project_name}}',
                     _description)
 
     def new_dialog(self):
@@ -214,7 +233,7 @@ class Application(tkinter.Tk):
         tkinter.Tk.__init__(self)
         menubar = MenuBar(self)
         self.config(menu=menubar)
-        self.wm_title('{{cookiecutter.display_name}}')
+        self.wm_title('{{cookiecutter.project_name}}')
         self.wm_geometry('640x480')
 
 {% if cookiecutter.insert_status == 'y' %}# Status bar selection == 'y'

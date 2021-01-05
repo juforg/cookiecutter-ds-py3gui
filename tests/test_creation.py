@@ -67,16 +67,15 @@ class TestCookieSetup(object):
         if pytest.param.get('open_source_license'):
             assert p == 'BSD-3'
         else:
-            assert p == 'MIT'
+            assert p == 'MIT License'
 
     def test_requirements(self):
         reqs_path = self.path / 'requirements.txt'
         assert reqs_path.exists()
         assert no_curlies(reqs_path)
-        if pytest.param.get('python_interpreter'):
-            with open(reqs_path) as fin:
-                lines = list(map(lambda x: x.strip(), fin.readlines()))
-            assert 'pathlib2' in lines
+        with open(reqs_path) as fin:
+            lines = list(map(lambda x: x.strip(), fin.readlines()))
+        assert 'pathlib2' in lines
 
     def test_makefile(self):
         makefile_path = self.path / 'Makefile'

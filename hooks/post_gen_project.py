@@ -5,34 +5,39 @@ from pathlib import Path
 import shlex
 from subprocess import run, CalledProcessError
 
-os_license = '{{ cookiecutter.license }}'
-project_report = '{{ cookiecutter.project_report }}'
+os_license = '{{ cookiecutter.open_source_license }}'
 notebooks = '{{ cookiecutter.notebooks }}'
-src_structure = '{{ cookiecutter.src_structure }}'
+pkg_name = '{{ cookiecutter.pkg_name }}'
+use_gui = '{{ cookiecutter.use_gui }}'
 
-if os_license == "No license file":
+if os_license == "Not open source":
     os.remove("LICENSE")
-if project_report == "No":
-    shutil.rmtree("reports")
+
 
 if notebooks == "No":
     shutil.rmtree("notebooks")
 
-if src_structure == "Less":
-    shutil.rmtree('src/data')
-    shutil.rmtree('src/features')
-    shutil.rmtree('src/models')
-    shutil.rmtree('src/visualization')
+if use_gui != "Y":
+    shutil.rmtree("gui")
 
-if "{{ cookiecutter.setup_project }}" == "Yes - select this":
-    os.system("git init")
-    os.system("pipenv install --dev")
+
+def install_black():
+    formatter = "{{ cookiecutter.formatter_type }}"
+    do_install = "{{ cookiecutter.install_precommit_hooks }}"
+    if formatter == "black" and do_install == "yes":
+        run('pipenv run pre-commit install'.split(), check=True)
+        print('installed black as a pre-commit hook.')
+    if formatter != "black":
+        run('pipenv uninstall black'.split(), check=True)
+    if do_install == "no":
+        run('pipenv uninstall pre-commit'.split(), check=True)
 
 
 def install_deps():
     """Install dependencies with pipenv"""
-    pipenv_dev = run('pipenv install --dev'.split(), check=True)
-    print('Installed dependencies and virtual environment. Type `pipenv shell` to activate later.')
+    if "{{ cookiecutter.setup_project }}" == "Yes - select this":
+        pipenv_dev = run('pipenv install --dev'.split(), check=True)
+        print('Installed dependencies and virtual environment. Type `pipenv shell` to activate later.')
 
 
 def init_repo():
@@ -64,7 +69,7 @@ def main():
     # set_markup_style()
 
     install_deps()
-    init_repo()
+    # init_repo()
 #    install_black()
 
 

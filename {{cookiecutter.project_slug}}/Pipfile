@@ -1,6 +1,6 @@
 [[source]]
 name = "pypi"
-url = "https://pypi.org/simple"
+url = "cookiecutter.pypi_source"
 verify_ssl = true
 
 [dev-packages]
@@ -24,11 +24,19 @@ numpy = "*"
 scipy = "*"
 seaborn = "*"
 jupyterlab = "*"
-{% if cookiecutter.cli_tool == "docopt" %}docopt = "*"{% elif cookiecutter.cli_tool == "click" %}click="*"{% endif %}
+click="*"
+pathlib2="*"
 versioneer = "*"
+python-dotenv= ">=0.5.1"
+{%- if cookiecutter.use_gui == "Y" %}
+pygubu = "*"
+pysimplegui = "*"
+pyperclip = "*"
+pystray = "*"
+{%- endif %}
 
 [requires]
-python_version = "3.6"
+python_version= "3.7"
 
 [scripts]
 beautify = "bash -c \"autoflake -i -r --expand-star-imports --remove-all-unused-imports --remove-duplicate-keys --remove-unused-variables **/*.py; isort **/*.py; black **/*.py\""
