@@ -1,11 +1,16 @@
-"""
-    PyIDM
-
-    multi-connections internet download manager, based on "pyCuRL/curl", "youtube_dl", and "PySimpleGUI"
-
-    :copyright: (c) 2019-2020 by Mahmoud Elshahat.
-    :license: GNU LGPLv3, see LICENSE for more details.
-"""
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+#      SJ编程规范
+# 命名：
+#    1. 见名思意，变量的名字必须准确反映它的含义和内容
+#    2. 遵循当前语言的变量命名规则
+#    3. 不要对不同使用目的的变量使用同一个变量名
+#    4. 同个项目不要使用不同名称表述同个东西
+#    5. 函数/方法 使用动词+名词组合，其它使用名词组合
+# 设计原则：
+#    1. KISS原则： Keep it simple and stupid !
+#    2. SOLID原则： S: 单一职责 O: 开闭原则 L: 迪米特法则 I: 接口隔离原则 D: 依赖倒置原则
+#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 # configurations
 from queue import Queue
@@ -13,11 +18,11 @@ import os
 import sys
 import platform
 
-from .version import __version__
+from {{cookiecutter.repo_name}}._version import __version__
 
 
 # CONSTANTS
-APP_NAME = 'PyIDM'
+APP_NAME = '{{ cookiecutter.pkg_name }}'
 APP_VERSION = __version__ 
 APP_TITLE = f'{APP_NAME} version {APP_VERSION} .. an open source download manager'
 DEFAULT_DOWNLOAD_FOLDER = os.path.join(os.path.expanduser("~"), 'Downloads')
@@ -25,8 +30,8 @@ DEFAULT_THEME = 'DarkGrey2'
 DEFAULT_CONNECTIONS = 10
 DEFAULT_SEGMENT_SIZE = 524288  # in bytes  = 512 KB
 DEFAULT_CONCURRENT_CONNECTIONS = 3
-APP_URL = 'https://github.com/pyIDM/pyIDM'
-LATEST_RELEASE_URL = 'https://github.com/pyIDM/pyIDM/releases/latest'
+APP_URL = ''
+LATEST_RELEASE_URL = ''
 
 # headers, note: a random user agent will replace below value later by video.import_ytdl()
 USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3721.3'

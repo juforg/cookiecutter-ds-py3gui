@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 #      SJ编程规范
 # 命名：
@@ -11,18 +12,18 @@
 #    2. SOLID原则： S: 单一职责 O: 开闭原则 L: 迪米特法则 I: 接口隔离原则 D: 依赖倒置原则
 #
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-"""
-{{cookiecutter.repo_name}}
------------------
+# main module executed when run command
+# python -m {{cookiecutter.repo_name}}_gui_main
 
-{{cookiecutter.short_description}}
-"""
-
-import datetime
-import gettext
 import sys
-import time
+
+# if __package__ is None and not hasattr(sys, 'frozen'):
+#     # direct call of __main__.py
+#     import os.path
+#     path = os.path.realpath(os.path.abspath(__file__))
+#     sys.path.insert(0, os.path.dirname(os.path.dirname(path)))
+
+from . import {{cookiecutter.repo_name}}_gui_main
 
 if __name__ == '__main__':
-    print('start! ')
-    # setp 1
+    {{cookiecutter.repo_name}}_gui_main.main()

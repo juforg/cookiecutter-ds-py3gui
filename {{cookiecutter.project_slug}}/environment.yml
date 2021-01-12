@@ -1,0 +1,26 @@
+name:
+	{{cookiecutter.repo_name}}
+channels:
+	- base
+	- conda-forge
+	- anaconda
+	- pathlib2
+{%- if cookiecutter.workflow_automation == "Snakemake" %}
+	- bioconda
+{%- endif %}
+dependencies:
+{%- if cookiecutter.notebooks == "Yes" %}
+	- jupyter
+{% endif -%}
+{%- if cookiecutter.workflow_automation == "Snakemake" %}
+	- snakemake
+{%- endif %}
+{%- if cookiecutter.use_gui == "Y" %}
+	- pysimplegui
+	- pyperclip
+	- pystray
+	- plyer
+	- pycurl
+	- pillow
+	- certifi
+{%- endif %}

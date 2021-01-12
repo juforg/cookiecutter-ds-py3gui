@@ -17,102 +17,102 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: es\n"
 
-#: {{cookiecutter.repo_name}}.py:37
+#: payslip-sender.py:37
 msgid "OK"
 msgstr "De acuerdo"
 
-#: {{cookiecutter.repo_name}}.py:61
+#: payslip-sender.py:61
 msgid "Navigation "
 msgstr "Navegación "
 
-#: {{cookiecutter.repo_name}}.py:74
+#: payslip-sender.py:74
 msgid "List item"
 msgstr "Producto en la lista"
 
-#: {{cookiecutter.repo_name}}.py:88
+#: payslip-sender.py:88
 msgid "Unset status "
 msgstr "estado desarmado "
 
-#: {{cookiecutter.repo_name}}.py:108
+#: payslip-sender.py:108
 msgid "Tool "
 msgstr "Herramienta "
 
-#: {{cookiecutter.repo_name}}.py:118
+#: payslip-sender.py:118
 msgid "Toolbar button"
 msgstr "botón de la barra"
 
-#: {{cookiecutter.repo_name}}.py:118
+#: payslip-sender.py:118
 msgid "pressed"
 msgstr "presionado"
 
-#: {{cookiecutter.repo_name}}.py:127
+#: payslip-sender.py:127
 msgid "Template"
 msgstr "Modelo"
 
-#: {{cookiecutter.repo_name}}.py:155
+#: payslip-sender.py:155
 msgid "New"
 msgstr "Nuevo"
 
-#: {{cookiecutter.repo_name}}.py:156
+#: payslip-sender.py:156
 msgid "Open"
 msgstr "Abierto"
 
-#: {{cookiecutter.repo_name}}.py:159
+#: payslip-sender.py:159
 msgid "Exit"
 msgstr "Salida"
 
-#: {{cookiecutter.repo_name}}.py:163 {{cookiecutter.repo_name}}.py:170
+#: payslip-sender.py:163 payslip-sender.py:170
 msgid "Help"
 msgstr "Ayuda"
 
-#: {{cookiecutter.repo_name}}.py:165 {{cookiecutter.repo_name}}.py:195
+#: payslip-sender.py:165 payslip-sender.py:195
 msgid "About"
 msgstr "Sobre"
 
-#: {{cookiecutter.repo_name}}.py:169
+#: payslip-sender.py:169
 msgid "File"
 msgstr "Archivo"
 
-#: {{cookiecutter.repo_name}}.py:180
+#: payslip-sender.py:180
 msgid "Help not yet created."
 msgstr "Ayudará aún no creado."
 
-#: {{cookiecutter.repo_name}}.py:188
+#: payslip-sender.py:188
 msgid "No description available"
 msgstr "No hay descripción disponible"
 
-#: {{cookiecutter.repo_name}}.py:190
+#: payslip-sender.py:190
 msgid "Author"
 msgstr "Autor"
 
-#: {{cookiecutter.repo_name}}.py:191
+#: payslip-sender.py:191
 msgid "Email"
 msgstr "Email"
 
-#: {{cookiecutter.repo_name}}.py:192
+#: payslip-sender.py:192
 msgid "Version"
 msgstr "Versión"
 
-#: {{cookiecutter.repo_name}}.py:193
+#: payslip-sender.py:193
 msgid "GitHub Package"
 msgstr "GitHub paquete"
 
-#: {{cookiecutter.repo_name}}.py:201
+#: payslip-sender.py:201
 msgid "New button pressed"
 msgstr "Nuevo botón presionado"
 
-#: {{cookiecutter.repo_name}}.py:201
+#: payslip-sender.py:201
 msgid "Not yet implemented"
 msgstr "Aun no implementado"
 
-#: {{cookiecutter.repo_name}}.py:208
+#: payslip-sender.py:208
 msgid "File selected for open: "
 msgstr "Archivo seleccionado para abrir:"
 
-#: {{cookiecutter.repo_name}}.py:210
+#: payslip-sender.py:210
 msgid "No file selected"
 msgstr "Ningún archivo seleccionado"
 
-#: {{cookiecutter.repo_name}}.py:252
+#: payslip-sender.py:252
 msgid "Uptime"
 msgstr "Uptime"

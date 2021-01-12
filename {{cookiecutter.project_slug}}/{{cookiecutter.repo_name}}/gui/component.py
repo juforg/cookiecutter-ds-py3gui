@@ -1,11 +1,16 @@
-"""
-    PyIDM
-
-    multi-connections internet download manager, based on "pyCuRL/curl", "youtube_dl", and "PySimpleGUI"
-
-    :copyright: (c) 2019-2020 by Mahmoud Elshahat.
-    :license: GNU LGPLv3, see LICENSE for more details.
-"""
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+#      SJ编程规范
+# 命名：
+#    1. 见名思意，变量的名字必须准确反映它的含义和内容
+#    2. 遵循当前语言的变量命名规则
+#    3. 不要对不同使用目的的变量使用同一个变量名
+#    4. 同个项目不要使用不同名称表述同个东西
+#    5. 函数/方法 使用动词+名词组合，其它使用名词组合
+# 设计原则：
+#    1. KISS原则： Keep it simple and stupid !
+#    2. SOLID原则： S: 单一职责 O: 开闭原则 L: 迪米特法则 I: 接口隔离原则 D: 依赖倒置原则
+#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 import gc
 import webbrowser
 from queue import Queue
@@ -35,7 +40,7 @@ except Exception as e:
     log('Warning!! "pystray" package is required for systray icon, import error', e, log_level=2)
 
 # todo: this module needs some clean up
-
+app_name = config.APP_NAME
 # gui Settings
 default_font = 'Helvetica 10'  # Helvetica font is guaranteed to work on all operating systems
 config.all_themes = natural_sort(sg.ListOfLookAndFeelValues())
@@ -113,8 +118,8 @@ class MainWindow:
         # start log recorder
         Thread(target=log_recorder, daemon=True).start()
 
-        log('-' * 50, 'PyIDM', '-' * 50)
-        log('Starting PyIDM version:', config.APP_VERSION, 'Frozen' if config.FROZEN else 'Non-Frozen')
+        log('-' * 50, config.APP_NAME, '-' * 50)
+        log(f'Starting {config.APP_NAME} version:', config.APP_VERSION, 'Frozen' if config.FROZEN else 'Non-Frozen')
         log('operating system:', config.operating_system_info)
 
         log('current working directory:', config.current_directory)
@@ -455,7 +460,7 @@ class MainWindow:
                       size=(15, 1), key='update_frequency', enable_events=True)],
             [
                 sg.B('', key='update_pyIDM', image_data=refresh_icon, **transparent, tooltip='check for update'),
-                sg.T(f'PyIDM version = {config.APP_VERSION}', size=(50, 1), key='pyIDM_version_note'),
+                sg.T(f'{config.APP_NAME} version = {config.APP_VERSION}', size=(50, 1), key='pyIDM_version_note'),
             ],
             [
                 sg.B('', key='update_youtube_dl', image_data=refresh_icon, **transparent,
@@ -760,16 +765,16 @@ class MainWindow:
             self.update_log()
 
             # update status code widget
-            self.window['status_code'](f'status: {self.d.status_code}')
+            # self.window['status_code'](f'status: {self.d.status_code}')
 
             # file name
-            if self.window['name'].get() != self.d.name:  # it will prevent cursor jump to end when modifying name
-                self.window['name'](self.d.name)
+            # if self.window['name'].get() != self.d.name:  # it will prevent cursor jump to end when modifying name
+            #     self.window['name'](self.d.name)
 
-            file_properties = f'Size: {size_format(self.d.total_size)} - Type: {self.d.type} - ' \
-                              f'{", ".join(self.d.subtype_list)} - ' \
-                              f'Protocol: {self.d.protocol} - Resumable: {"Yes" if self.d.resumable else "No"} ...'
-            self.window['file_properties'](file_properties)
+            # file_properties = f'Size: {size_format(self.d.total_size)} - Type: {self.d.type} - ' \
+            #                   f'{", ".join(self.d.subtype_list)} - ' \
+            #                   f'Protocol: {self.d.protocol} - Resumable: {"Yes" if self.d.resumable else "No"} ...'
+            # self.window['file_properties'](file_properties)
 
             # table
             if self.active_tab == 'Downloads':
@@ -785,7 +790,7 @@ class MainWindow:
             self.window['youtube_dl_update_note'](
                 f'Youtube-dl version = {config.ytdl_VERSION}, Latest version = {config.ytdl_LATEST_VERSION}')
             self.window['pyIDM_version_note'](
-                f'PyIDM version = {config.APP_VERSION}, Latest version = {config.APP_LATEST_VERSION}')
+                f'{config.APP_NAME} version = {config.APP_VERSION}, Latest version = {config.APP_LATEST_VERSION}')
 
             # update total speed
             total_speed = 0
@@ -1375,7 +1380,7 @@ class MainWindow:
             # run one time, reason this is here not in setup, is to minimize gui loading time
             if self.one_time:
                 self.one_time = False
-                
+
                 # print last check for update
                 if config.update_frequency < 0:
                     log('check for update is disabled!')
@@ -1399,7 +1404,7 @@ class MainWindow:
                         if days_since_last_update >= config.update_frequency:
                             log('days since last check for update:', days_since_last_update, 'day(s).')
                             log('asking user permission to check for update')
-                            response = sg.PopupOKCancel('PyIDM reminder to check for updates!',
+                            response = sg.PopupOKCancel(f'{config.APP_NAME} reminder to check for updates!',
                                                         f'days since last check: {days_since_last_update} day(s).',
                                                         'you can change frequency or disable check for update from settings\n', title='Reminder')
                             if response == 'OK':
@@ -2194,7 +2199,7 @@ class MainWindow:
             self.hide()
 
             # notify
-            notify('PyIDM still running in background', timeout=2)
+            notify(f'{config.APP_NAME} still running in background', timeout=2)
 
         else:
             # closing window and terminate downloads
@@ -2766,7 +2771,7 @@ class AboutWindow:
         self.active = True  # if False, object will be removed from "active windows list"
 
         # create gui
-        msg1 = f'PyIDM is an open source multi-connections download manager, it downloads general files, support \n' \
+        msg1 = f'{config.APP_NAME} is an open source multi-connections download manager, it downloads general files, support \n' \
                f'downloading videos, and playlists from youtube, and other media websites.\n' \
                f'Developed in Python, based on "pyCuRL/LibCurl", "youtube_dl", and "PySimpleGUI"  \n\n' \
                f'This application is free for use, in hope to be useful for someone, \n' \
@@ -2775,7 +2780,7 @@ class AboutWindow:
                f'     - DRM "Digital rights management", protected videos / streams or Copyright materials. \n' \
                f'     - Porn videos/streams or any pornography materials\n' \
                f'     - Illegal contents or any material that encourage/promote violence or criminal/illegal behaviours\n' \
-               f'- This application is provided "AS IS" without any warranty, it is under no circumstances the PyIDM author \n' \
+               f'- This application is provided "AS IS" without any warranty, it is under no circumstances the {config.APP_NAME} author \n' \
                f'  could be held liable for any claim, or damages or responsible for any misuse of this application.\n\n' \
                f'your feedback is most welcomed on:'
 
@@ -2797,7 +2802,7 @@ class AboutWindow:
                   [sg.T(msg2)],
                   [sg.Column([[sg.Ok()]], justification='right')]]
 
-        window = sg.Window(f'about PyIDM', layout, finalize=True)
+        window = sg.Window(f'about {config.APP_NAME}', layout, finalize=True)
 
         # set cursor for links
         for key in ('home_page', 'issues', 'new_issue', 'email'):
@@ -3260,7 +3265,7 @@ class SysTray:
                         MenuItem("Minimize to Systray", self.minimize_to_systray),
                         MenuItem("Close to Systray", self.close_to_systray),
                         MenuItem("Quit", self.quit),)
-            self.icon = Icon('PyIDM', self.tray_icon, menu=menu)
+            self.icon = Icon(config.APP_NAME, self.tray_icon, menu=menu)
             self.active = True
             self.icon.run()
         except Exception as e:

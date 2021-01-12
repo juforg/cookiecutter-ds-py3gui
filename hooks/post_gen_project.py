@@ -1,14 +1,14 @@
 import os
-import sys
 import shutil
-from pathlib import Path
 import shlex
 from subprocess import run, CalledProcessError
 
+repo_name = '{{cookiecutter.repo_name}}'
 os_license = '{{ cookiecutter.open_source_license }}'
 notebooks = '{{ cookiecutter.notebooks }}'
 pkg_name = '{{ cookiecutter.pkg_name }}'
 use_gui = '{{ cookiecutter.use_gui }}'
+package_manager = '{{ cookiecutter.package_manager }}'
 
 if os_license == "Not open source":
     os.remove("LICENSE")
@@ -18,26 +18,38 @@ if notebooks == "No":
     shutil.rmtree("notebooks")
 
 if use_gui != "Y":
-    shutil.rmtree("gui")
+    shutil.rmtree(f"{repo_name}/gui")
 
 
 def install_black():
     formatter = "{{ cookiecutter.formatter_type }}"
     do_install = "{{ cookiecutter.install_precommit_hooks }}"
     if formatter == "black" and do_install == "yes":
-        run('pipenv run pre-commit install'.split(), check=True)
+        run(f'{package_manager} run pre-commit install'.split(), check=True)
         print('installed black as a pre-commit hook.')
     if formatter != "black":
-        run('pipenv uninstall black'.split(), check=True)
+        run(f'{package_manager}pipenv uninstall black'.split(), check=True)
     if do_install == "no":
-        run('pipenv uninstall pre-commit'.split(), check=True)
+        run(f'{package_manager} uninstall pre-commit'.split(), check=True)
 
 
 def install_deps():
-    """Install dependencies with pipenv"""
-    if "{{ cookiecutter.setup_project }}" == "Yes - select this":
-        pipenv_dev = run('pipenv install --dev'.split(), check=True)
-        print('Installed dependencies and virtual environment. Type `pipenv shell` to activate later.')
+    # choose_package_manager
+    print('Create complete!')
+    if package_manager == "conda":
+        os.remove("Pipfile")
+        os.remove("requirements.txt")
+        os.remove("requirements-dev.txt")
+        print('Type "conda env create -f environment.yml" to install dependencies.')
+    elif package_manager == "pipenv":
+        os.remove("requirements.txt")
+        os.remove("requirements-dev.txt")
+        os.remove("environment.yml")
+        print('Type "pipenv install --dev" to install dependencies.')
+    else:
+        os.remove("environment.yml")
+        os.remove("Pipfile")
+        print('Type pip install -r requirements.tx to install dependencies.')
 
 
 def init_repo():
@@ -46,9 +58,6 @@ def init_repo():
     try:
         git_init = run('git init .'.split(), check=True)
         print('Initialized git repository')
-        if repo:
-            git_add_remote = run(f'git remote add origin {repo}'.split(), check=True)
-            print(f'Found url, set origin: {repo}')
         git_add = run('git add -A'.split(), check=True)
         git_commit = run(shlex.split(f'git commit -m "first commit of {pkg_name} "'), check=True)
         git_tag = run(shlex.split('git tag -a -m "first tag" 0.0.1'), check=True)
@@ -64,10 +73,10 @@ def init_repo():
     except CalledProcessError as e:
         print(e)
 
+
 def main():
     # clean_up_docopt()
     # set_markup_style()
-
     install_deps()
     # init_repo()
 #    install_black()

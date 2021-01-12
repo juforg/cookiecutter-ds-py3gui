@@ -1,12 +1,11 @@
-about_notes = f"""PyIDM is a python open source (Internet Download Manager) with multi-connections, high speed engine, 
-it downloads general files and videos from youtube and tons of other streaming websites .
-Developed in Python, based on "pyCuRL/libcurl", "youtube_dl", and "PySimpleGUI"
+about_notes = f"""{{ cookiecutter.pkg_name }} is 
+Developed in Python, based on "PySimpleGUI"
 
 your feedback is most welcomed on
 
-https://github.com/pyIDM/pyIDM
-email: info.pyidm@gmail.com
+https://github.com/juforg/cookiecutter-ds-py3gui
+email: juforg@gmail.com
 
 Author,
-Mahmoud Elshahat
-2019-2020"""
+juforg
+2010-2021"""
