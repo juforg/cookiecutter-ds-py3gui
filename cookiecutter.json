@@ -11,6 +11,7 @@
     "package_manager": ["conda", "pip", "pipenv"],
     "workflow_automation": ["Python", "Make", "Snakemake"],
     "notebooks": ["Yes", "No"],
+    "use_docker": ["No", "Yes"],
     "open_source_license": ["MIT License", "BSD License", "GNU General Public License v3", "Apache Software License 2.0", "Not open source"],
     "formatter_type": ["black", "autopep8", "yapf"],
     "install_precommit_hooks":["no","yes"],

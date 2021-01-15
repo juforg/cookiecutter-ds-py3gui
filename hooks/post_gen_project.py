@@ -8,6 +8,7 @@ os_license = '{{ cookiecutter.open_source_license }}'
 notebooks = '{{ cookiecutter.notebooks }}'
 pkg_name = '{{ cookiecutter.pkg_name }}'
 use_gui = '{{ cookiecutter.use_gui }}'
+use_docker = '{{ cookiecutter.use_docker }}'
 package_manager = '{{ cookiecutter.package_manager }}'
 
 if os_license == "Not open source":
@@ -16,6 +17,9 @@ if os_license == "Not open source":
 
 if notebooks == "No":
     shutil.rmtree("notebooks")
+
+if use_docker == "No":
+    shutil.rmtree("docker")
 
 if use_gui != "Y":
     shutil.rmtree(f"{repo_name}/gui")
