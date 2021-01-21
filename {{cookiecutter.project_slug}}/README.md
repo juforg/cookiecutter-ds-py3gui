@@ -80,7 +80,7 @@
 {%- endif %}
     │
     └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
-{%- elif cookiecutter.package_manager == "pipenv" %}
+{%- if cookiecutter.package_manager == "pipenv" %}
     ├── Pipfile                   <- The Pipfile for reproducing the analysis environment
 {%- endif %}
     ├── .gitignore                <- GitHub's excellent Python .gitignore customized for this project
