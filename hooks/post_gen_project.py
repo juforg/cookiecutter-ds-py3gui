@@ -23,6 +23,7 @@ if use_docker == "No":
 
 if use_gui != "Y":
     shutil.rmtree(f"{repo_name}/gui")
+    os.remove("azure-pipelines.yml")
 
 
 def install_black():
@@ -46,7 +47,7 @@ def install_deps():
         os.remove("requirements-dev.txt")
         print('Type "conda env create -f environment.yml" to install dependencies.')
     elif package_manager == "pipenv":
-        os.remove("requirements.txt")
+        # os.remove("requirements.txt")
         os.remove("requirements-dev.txt")
         os.remove("environment.yml")
         print('Type "pipenv install --dev" to install dependencies.')

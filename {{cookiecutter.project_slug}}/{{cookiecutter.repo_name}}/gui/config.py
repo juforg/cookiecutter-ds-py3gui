@@ -18,7 +18,7 @@ import os
 import sys
 import platform
 
-from {{cookiecutter.repo_name}}._version import __version__
+from _version import __version__
 
 
 # CONSTANTS

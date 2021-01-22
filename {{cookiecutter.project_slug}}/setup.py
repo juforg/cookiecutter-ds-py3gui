@@ -1,6 +1,9 @@
 from setuptools import find_packages, setup
 import versioneer
 import os
+import sys
+
+from cx_Freeze import setup, Executable
 
 # get current directory
 path = os.path.realpath(os.path.abspath(__file__))

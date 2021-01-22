@@ -7,18 +7,29 @@
 
     pip install -U pipenv  # if you haven't already
     pipenv install
-    pipenv run python app.py
+    pipenv run python {{cookiecutter.repo_name}}/{{cookiecutter.repo_name}}_main.py or  pipenv run python {{cookiecutter.repo_name}}/{{cookiecutter.repo_name}}_gui_main.py
     
 ## Development
 
     pipenv install --dev
     pipenv shell
     
+    install a package which needed in develop period 
+    `pipenv install pytest --dev`
+
 ## Test
 
     pytest
+    
+## Deployment
+    `pipenv install --deploy`
+    this command will enforce your Pipfile.lock up to date
+    then in you server
+    `pipenv sync`  will  install packages exactly as specified in Pipfile.lock
 
-
+# Generating a requirements.txt
+    `pipenv lock -r`
+    `pipenv lock -r --dev`
 ## Directory structure
 ------------
 {% if cookiecutter.open_source_license != "Not open source" -%}
@@ -112,7 +123,7 @@
 <p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
 
 [Cookiecutter]: https://github.com/audreyr/cookiecutter
-[Pipenv]: https://pipenv.pypa.io/en/latest/
+- [Pipenv]: https://pipenv.pypa.io/en/latest/ https://crazygit.wiseturtles.com/2018/01/08/pipenv-tour/
 [Weights and Biases]: https://www.wandb.com/
 [MLFlow]: https://mlflow.org/
 [asyncio]: https://docs.python.org/3/library/asyncio.html

@@ -23,7 +23,7 @@ import sys
 #     path = os.path.realpath(os.path.abspath(__file__))
 #     sys.path.insert(0, os.path.dirname(os.path.dirname(path)))
 
-from . import {{cookiecutter.repo_name}}_gui_main
+from {{cookiecutter.repo_name}} import {{cookiecutter.repo_name}}_gui_main
 
 if __name__ == '__main__':
     {{cookiecutter.repo_name}}_gui_main.main()

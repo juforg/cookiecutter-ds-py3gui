@@ -1,0 +1,54 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+strategy:
+  matrix:
+    linux:
+      imageName: 'ubuntu-16.04'
+    mac:
+      imageName: 'macos-10.14'
+    windows:
+      imageName: 'vs2017-win2016'
+pool:
+  vmImage: $(imageName)
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.x'
+    addToPath: true
+    architecture: 'x64'
+# Linux
+- bash: |
+    pip install --upgrade pip
+    pip install -r requirements.txt
+    pip install cx-freeze
+    python versioneer install
+    python setup.py bdist_rpm
+  condition: eq( variables['Agent.OS'], 'Linux' )
+  displayName: build on Linux
+# macOS
+- bash: |
+    pip install --upgrade pip
+    pip install -r requirements.txt
+    pip install cx-freeze
+    python versioneer install
+    python setup.py bdist_dmg
+  condition: eq( variables['Agent.OS'], 'Darwin' )
+  displayName: build on macOS
+# Windows
+- powershell: |
+    pip install --upgrade pip
+    pip install -r requirements.txt
+    pip install cx-freeze
+    python versioneer install
+    python setup.py bdist_msi
+  condition: eq( variables['Agent.OS'], 'Windows_NT' )
+  displayName: build on Windows
+
+

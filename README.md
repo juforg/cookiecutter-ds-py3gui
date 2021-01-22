@@ -52,9 +52,9 @@ $ conda config --add channels conda-forge
 $ conda install cookiecutter
 ```
 
-
 ### To start a new project, run:
 ------------
+[![asciicast](https://asciinema.org/a/uyfETRhchKNX0FyQiuB2ZX3IY.svg)](https://asciinema.org/a/uyfETRhchKNX0FyQiuB2ZX3IY)
 ```bash
     cookiecutter gh:juforg/cookiecutter-ds-py3gui
 ```
