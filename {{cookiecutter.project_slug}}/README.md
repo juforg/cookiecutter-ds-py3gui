@@ -101,24 +101,21 @@
 
 |包名|说明|版本要求|
 |----|----|----|
-|python-dotenv|加载.flaskenv配置到环境变量中||
+|python-dotenv|加载.env配置到环境变量中||
 |mip|混合整数规划|1.9.0|
 |PuLP|混合整数规划|2.0|
-|celery|异步任务/定时任务框架|4.3|
-|flask-redis|redis集成|可被当作分布式锁|
-|marshmallow|序列化反序列化包|3|
 |pandas|结构化数据的分析工具集||
-|sqlacodegen|生成sqlalchemy的model代码||
+|wandb|A tool for visualizing and tracking your machine learning experiments||
+|tensorboard|TensorFlow 的可视化工具包||
 |cachetools|方法结果缓存||
 |pyarmor|python代码加密||
-|aiohttp|异步http请求||
 |pick|命令行选则器||
 |click|命令行强化(不选用argparse、docopt、fire)|7.0|
 |joblib|模型转文件||
 |pathlib2|替换os.path|
-|pygubu|GUI布局工具|
-|pystray|系统托盘|
-|plyer|系统托盘提示|
+|pystray|GUI系统托盘|
+|plyer|GUI系统托盘提示|
+|pysimplegui|GUI框架|
 
 <p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
 

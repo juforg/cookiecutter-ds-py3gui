@@ -24,7 +24,7 @@ from _version import __version__
 # CONSTANTS
 APP_NAME = '{{ cookiecutter.pkg_name }}'
 APP_VERSION = __version__ 
-APP_TITLE = f'{APP_NAME} version {APP_VERSION} .. an open source download manager'
+APP_TITLE = f'{APP_NAME} version {APP_VERSION} .. an xxx app'
 DEFAULT_DOWNLOAD_FOLDER = os.path.join(os.path.expanduser("~"), 'Downloads')
 DEFAULT_THEME = 'DarkGrey2'
 DEFAULT_CONNECTIONS = 10
