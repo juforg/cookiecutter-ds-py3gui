@@ -7,3 +7,16 @@ Here you can find all the notebooks. The naming convention is:
 
         01_sj_simple_ds_with_gui.ipynb
         02_cp_exploratory_data_analysis.ipynb
+
+
+
+
+```python
+from notebook.auth import passwd
+passwd("xxxx")
+```
+
+`jupyter notebook --generate-config`
+
+## 换主题
+`pip install jupyterthemes --user`

@@ -4,8 +4,6 @@ url = "{{cookiecutter.pypi_source}}"
 verify_ssl = true
 
 [dev-packages]
-ipython = "*"
-pytest = "*"
 black = "==19.10b0"
 isort = "*"
 autoflake = "*"
@@ -13,24 +11,41 @@ pylint = "*"
 pre-commit = "*"
 pycodestyle = "*"
 pydocstyle = "*"
-coverage = "*"
-pytest-cov = "*"
 {%- if cookiecutter.notebooks == "Yes" %}
 jupyter = "*"
+ipython = "*"
 {% endif -%}
+# test packages
+coverage = "*"
+pytest-cov = "*"
+pytest = "*"
 
 [packages]
-wandb = "*"
-attrs = "*"
-pandas = "*"
-numpy = "*"
-scipy = "*"
-seaborn = "*"
 click="*"
 pathlib2="*"
 versioneer = "*"
 python-dotenv= ">=0.5.1"
+attrs = "*"
+pandas = "*"
+numpy = "*"
+{%- if cookiecutter.use_ml == "Yes" or cookiecutter.use_or == "Yes" %}
+scipy = "*"
+{% endif -%}
+{%- if cookiecutter.use_ml == "Yes" %}
+wandb = "*"
+lightgbm = "*"
+scikit-learn = "*"
+#tensorboard = "*"
+{% endif -%}
+{%- if cookiecutter.use_or == "Yes" %}
+# operation research packages
+mip = "*"
+pulp = "*"
+{% endif -%}
+#可视化
+seaborn = "*"
 {%- if cookiecutter.use_gui == "Y" %}
+# GUI packages
 pysimplegui = "*"
 pyperclip = "*"
 pystray = "*"

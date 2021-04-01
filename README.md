@@ -34,6 +34,8 @@ data science (immutablity of raw data, seperation of exploratory code and
 * Batteries included: [Pandas], [numpy], [scipy], [seaborn], and [jupyterlab] already installed.
 * Consistent code quality: [black], [isort], [autoflake], and [pylint] already installed.
 * [Pytest] for testing.
+* Provide a operation research (OR) demo
+* Provide a machine learning (ML) demo  sales predict
 
 ### Requirements to use the cookiecutter template:
 -----------
@@ -58,13 +60,18 @@ $ conda install cookiecutter
 ```bash
     cookiecutter gh:juforg/cookiecutter-ds-py3gui
 ```
-
+#### Params Description
+- use_gui
+    > whether to use gui packages, such as mip,pulp 
+- use_ml
+    > whether to use machine learning packages, such as lightgbm , wandb
+- use_or
+    > whether to use operation research (OR)
+####
 Get inside the project:
 
     cd <repo_name>
     pipenv shell  # activates virtualenv
-
-[![asciicast](https://asciinema.org/a/244658.svg)](https://asciinema.org/a/244658)
 
 
 ### The resulting directory structure

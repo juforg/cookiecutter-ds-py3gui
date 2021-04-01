@@ -8,6 +8,8 @@ os_license = '{{ cookiecutter.open_source_license }}'
 notebooks = '{{ cookiecutter.notebooks }}'
 pkg_name = '{{ cookiecutter.pkg_name }}'
 use_gui = '{{ cookiecutter.use_gui }}'
+use_ml = '{{ cookiecutter.use_ml }}'
+use_or = '{{ cookiecutter.use_or }}'
 use_docker = '{{ cookiecutter.use_docker }}'
 package_manager = '{{ cookiecutter.package_manager }}'
 
@@ -85,6 +87,7 @@ def main():
     install_deps()
     # init_repo()
 #    install_black()
+    # todo choose ml or demo
 
 
 if __name__ == "__main__":

@@ -47,7 +47,7 @@ class AP:
             self.ap_model.add_constr(xsum(self.dec_vars[i][j] for j in range(len(self.profit_matrix))) == 1)
         for j in range(len(self.profit_matrix)):  # 每列只能有一个1
             self.ap_model.add_constr(xsum(self.dec_vars[i][j] for i in range(len(self.profit_matrix))) == 1)
-        is_init = True
+        self.is_init = True
 
     def solve(self, max_seconds: int = 10):
         """

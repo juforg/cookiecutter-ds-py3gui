@@ -18,4 +18,20 @@ pycurl
 pillow
 certifi
 {%- endif %}
+pandas = "*"
+numpy = "*"
+{%- if cookiecutter.use_ml == "Yes" or cookiecutter.use_or == "Yes" %}
+scipy
+{% endif -%}
+{%- if cookiecutter.use_ml == "Yes" %}
+wandb
+lightgbm
+scikit-learn
+#tensorboard
+{% endif -%}
+{%- if cookiecutter.use_or == "Yes" %}
+# operation research packages
+mip
+pulp
+{% endif -%}
 
