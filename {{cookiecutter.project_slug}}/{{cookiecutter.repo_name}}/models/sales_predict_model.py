@@ -116,6 +116,7 @@ class SalesPredictModel:
         """
         logger.info("开始构建特征")
         self.feature_matrix_df = build_feature_matrix(self.train_df)
+        logger.info(f"特征矩阵占用内存:{self.feature_matrix_df.memory_usage().sum() / 1024 ** 2}Mb")
         # 构建门店特征
         self.shops_df = build_shop_features(self.shops_df)
         self.shops_df = self.shops_df[[e.value for e in ShopKey]]
@@ -124,26 +125,29 @@ class SalesPredictModel:
         self.items_df = build_item_features(self.items_df, self.item_categories_df)
         self.items_df = self.items_df[[e.value for e in ItemKey]]
         self.feature_matrix_df = pd.merge(self.feature_matrix_df, self.items_df, on=['item_id'], how='left')
+        logger.info(f"特征矩阵占用内存:{self.feature_matrix_df.memory_usage().sum() / 1024 ** 2}Mb")
         # 构建日期特征
         self.feature_matrix_df = build_date_features(self.feature_matrix_df)
         # 构建商品门店间相互作用特征
         self.feature_matrix_df, _, _ = build_interaction_features(self.feature_matrix_df)
         # Add sales lags for last 3 months
         self.feature_matrix_df = build_lag_features(self.feature_matrix_df, [1, 2, 3], 'item_cnt_month')
-
+        logger.info(f"特征矩阵占用内存:{self.feature_matrix_df.memory_usage().sum() / 1024 ** 2}Mb")
         self.feature_matrix_df = build_avg_shop_item_price_features(self.feature_matrix_df, self.date_block_item_shop_avg_price_df, self.date_block_item_avg_price_df)
         self.feature_matrix_df = build_target_enc_features(self.feature_matrix_df)
         self.feature_matrix_df = build_extra_interaction_features(self.feature_matrix_df)
         self.feature_matrix_df = lag_feature_adv(self.feature_matrix_df, [1, 2, 3], 'item_cnt_month')
+        logger.info(f"特征矩阵占用内存:{self.feature_matrix_df.memory_usage().sum() / 1024 ** 2}Mb")
         # Remove data for the first three months
         self.feature_matrix_df.fillna(0, inplace=True)
         self.feature_matrix_df = self.feature_matrix_df[(self.feature_matrix_df['date_block_num'] > 2)]
         self.feature_matrix_df.drop(['ID'], axis=1, inplace=True, errors='ignore')
+        logger.info(f"特征矩阵占用内存:{self.feature_matrix_df.memory_usage().sum() / 1024 ** 2}Mb")
         logger.info("完成构建特征")
 
     def load_features(self, dump_path, replace=True):
         """
-        加载已有特征
+        加载已有特征矩阵
         :return:
         """
         if self.feature_matrix_df is None or self.feature_matrix_df.empty or replace:
@@ -215,7 +219,7 @@ class SalesPredictModel:
     def predict(self, target_df):
         """
         开始预测
-        :param idx:
+        :param target_df:
         :return:
         """
         logger.info("开始预测")
